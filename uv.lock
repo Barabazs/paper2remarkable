@@ -682,7 +682,7 @@ wheels = [
 [[package]]
 name = "paper2remarkable"
 version = "0.9.14"
-source = { editable = "." }
+source = { virtual = "." }
 dependencies = [
     { name = "beautifulsoup4" },
     { name = "html2text" },
@@ -692,6 +692,7 @@ dependencies = [
     { name = "pikepdf" },
     { name = "pycryptodome" },
     { name = "pyyaml" },
+    { name = "readabilipy" },
     { name = "readability-lxml" },
     { name = "regex" },
     { name = "requests" },
@@ -726,6 +727,7 @@ requires-dist = [
     { name = "pikepdf", specifier = ">=2.9.0" },
     { name = "pycryptodome" },
     { name = "pyyaml", specifier = ">=5.1" },
+    { name = "readabilipy", specifier = ">=0.3.0" },
     { name = "readabilipy", marker = "extra == 'dev'" },
     { name = "readabilipy", marker = "extra == 'full'" },
     { name = "readabilipy", marker = "extra == 'test'" },

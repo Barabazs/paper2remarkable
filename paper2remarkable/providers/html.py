@@ -74,7 +74,8 @@ def make_readable(request_html):
 
         have_readabilipy_js = readabilipy.simple_json.have_node()
     except ImportError:
-        pass
+        raise ImportError("readabilipy is not installed")
+        
 
     if have_readabilipy_js:
         logger.info("Converting HTML using Readability.js")
