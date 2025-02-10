@@ -1,9 +1,57 @@
+[project]
+name = "paper2remarkable"
+version = "0.9.14"
+description = "Easily download an academic paper and send it to the reMarkable"
+authors = [
+    { name = "Gertjan van den Burg", email = "gertjanvandenburg@gmail.com" },
+]
+requires-python = ">=3.9"
+license = { text = "MIT" }
+readme = "README.md"
+dependencies = [
+    "beautifulsoup4>=4.8",
+    "html2text>=2020.1.16",
+    "lxml_html_clean>=0.1.1",
+    "markdown>=3.1.1",
+    "pdfplumber>=0.11",
+    "pikepdf>=2.9.0",
+    "pycryptodome",
+    "pyyaml>=5.1",
+    "readability-lxml>=0.7.1",
+    "regex>=2018.11",
+    "requests>=2.21",
+    "titlecase>=0.12",
+    "unidecode>=1.1",
+    "validators>=0.34",
+    "weasyprint>=51",
+]
+
+[project.optional-dependencies]
+full = ["readabilipy"]
+test = ["green", "readabilipy"]
+docs = []
+dev = ["green", "readabilipy"]
+
+[project.urls]
+Homepage = "https://github.com/GjjvdBurg/paper2remarkable"
+
+[project.scripts]
+p2r = "paper2remarkable.__main__:main"
+
+
 [tool.black]
-line-length=79
+line-length = 79
 
 [tool.isort]
-profile="black"
-sections = ['FUTURE', 'STDLIB', 'TYPING', 'THIRDPARTY', 'FIRSTPARTY', 'LOCALFOLDER' ]
+profile = "black"
+sections = [
+    'FUTURE',
+    'STDLIB',
+    'TYPING',
+    'THIRDPARTY',
+    'FIRSTPARTY',
+    'LOCALFOLDER',
+]
 known_typing = ['typing']
-force_single_line=true
-lines_between_types=1
+force_single_line = true
+lines_between_types = 1

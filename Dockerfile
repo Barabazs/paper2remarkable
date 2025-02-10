@@ -18,12 +18,18 @@ RUN mkdir -p /usr/share/man/man1
 # imagemagick, pdftk, ghostscript, pdfcrop, weasyprint
 RUN apt-get update \
     && apt-get install --no-install-recommends -y \
-        libmagickwand-dev \
-        pdftk \
-        ghostscript \
-	    poppler-utils
+    libmagickwand-dev \
+    pdftk \
+    ghostscript \
+    poppler-utils \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
 
-RUN pip install --no-cache-dir paper2remarkable
+# Install uv
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Install paper2remarkable using uv
+RUN uv pip install --system paper2remarkable && rm -rf /root/.cache/uv
 
 RUN useradd -u 1000 -m -U user
 

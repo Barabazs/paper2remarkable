@@ -5,10 +5,9 @@
 
 PACKAGE=paper2remarkable
 DOC_DIR='./docs/'
-VENV_DIR=/tmp/p2r_venv/
+VENV_DIR=.venv
 
-.PHONY: help dist venv docs
-
+.PHONY: help dist venv docs 
 .DEFAULT_GOAL := help
 
 help:
@@ -17,19 +16,15 @@ help:
 		 %s\n", $$1, $$2}'
 
 release: ## Make a release
-	python make_release.py
+	uv run make_release.py
 
-
-install: docs ## Install for the current user using the default python command
-	python setup.py build_ext --inplace
-	python setup.py install --user
-
+install: docs ## Install for the current user
+	uv pip install --user .
 
 test: venv ## Run unit tests
 	source $(VENV_DIR)/bin/activate && green -vv -s 1 -a ./tests
 
-
-clean: ## Clean build dist and egg directories left after install
+clean: ## Clean build dist and egg directories
 	rm -rf ./dist
 	rm -rf ./build
 	rm -rf ./$(PACKAGE).egg-info
@@ -40,7 +35,7 @@ clean: ## Clean build dist and egg directories left after install
 	find . -type d -name '__pycache__' -empty -delete
 
 dist: docs ## Make Python source distribution
-	python setup.py sdist bdist_wheel
+	uv build
 
 docs:
 	$(MAKE) -C $(DOC_DIR) clean && $(MAKE) -C $(DOC_DIR) man
@@ -48,8 +43,8 @@ docs:
 venv: $(VENV_DIR)/bin/activate
 
 $(VENV_DIR)/bin/activate:
-	test -d $(VENV_DIR) || python -m venv $(VENV_DIR)
-	source $(VENV_DIR)/bin/activate && pip install -e .[dev]
+	test -d $(VENV_DIR) || uv venv $(VENV_DIR)
+	source $(VENV_DIR)/bin/activate && uv pip install -e .[dev]
 	touch $(VENV_DIR)/bin/activate
 
 clean_venv:

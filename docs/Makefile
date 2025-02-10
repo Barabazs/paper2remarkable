@@ -15,7 +15,7 @@ OUTPUT_DIR=./output
 PACKAGE       = p2r
 SPHINXBUILD   = sphinx-build
 ALLSPHINXOPTS = -d .build/doctrees .
-PYTHON       ?= python
+PYTHON       ?= python3
 
 .PHONY: all
 
@@ -53,8 +53,8 @@ clean_output:
 venv: $(VENV_DIR)/bin/activate
 
 $(VENV_DIR)/bin/activate:
-	test -d $(VENV_DIR) || $(PYTHON) -m venv $(VENV_DIR)
-	source $(VENV_DIR)/bin/activate && pip install sphinx
+	test -d $(VENV_DIR) || uv venv $(VENV_DIR)
+	source $(VENV_DIR)/bin/activate && uv pip install sphinx
 	touch $(VENV_DIR)/bin/activate
 
 clean_venv:
