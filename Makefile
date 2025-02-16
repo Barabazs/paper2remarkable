@@ -18,8 +18,8 @@ help:
 release: ## Make a release
 	uv run make_release.py
 
-install: docs ## Install for the current user
-	uv pip install --user .
+install-dev: venv ## Install for the current user
+	uv pip install --editable .[dev]
 
 test: venv ## Run unit tests
 	source $(VENV_DIR)/bin/activate && green -vv -s 1 -a ./tests

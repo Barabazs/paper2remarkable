@@ -8,7 +8,7 @@ import sys
 
 
 def main():
-    from .ui import main as realmain
+    from paper2remarkable.ui import main as realmain
 
     sys.exit(realmain())
 

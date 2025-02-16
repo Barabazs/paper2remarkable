@@ -5,7 +5,7 @@ description = "Easily download an academic paper and send it to the reMarkable"
 authors = [
     { name = "Gertjan van den Burg", email = "gertjanvandenburg@gmail.com" },
 ]
-requires-python = ">=3.9"
+requires-python = ">=3.9, <3.12"
 license = { text = "MIT" }
 readme = "README.md"
 dependencies = [
