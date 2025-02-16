@@ -49,3 +49,7 @@ $(VENV_DIR)/bin/activate:
 
 clean_venv:
 	rm -rf $(VENV_DIR)
+
+build-docker:
+	docker build -t p2r .
+
