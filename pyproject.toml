@@ -21,6 +21,7 @@ dependencies = [
     "readability-lxml>=0.7.1",
     "regex>=2018.11",
     "requests>=2.21",
+    "selenium>=4.0.0",
     "titlecase>=0.12",
     "unidecode>=1.1",
     "validators>=0.34",
